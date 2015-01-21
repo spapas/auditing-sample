@@ -1,0 +1,13 @@
+<h3>SHBooks</h3>
+<a href='{% url "create_shbook" %}'>Create</a>
+<hr />
+{% for book in object_list %}
+    Name: {{ book.name }}, Author: {{ book.author }}<br />
+    <h4>History</h4>
+    {% for history in book.history.all %}
+        History user:{{ history.history_user }}, history type: {{ history.get_history_type_display }} -
+        history date: {{ history.history_date }}, historical values: {{ history.name }}, {{ history.author }} <br />
+    {% endfor %}
+    <a href = '{% url "update_shbook" book.id %}'>Update</a>
+    <hr />
+{% endfor %}

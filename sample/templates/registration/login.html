@@ -1,0 +1,11 @@
+
+{% load staticfiles %}
+{% block content %}
+    <h1>Login</h1>
+    <form method='POST'>
+        {% csrf_token %}
+        {{ form }}
+        <input type='submit' class='btn btn-primary' value='Login'>
+    </form>
+{% endblock %}
+

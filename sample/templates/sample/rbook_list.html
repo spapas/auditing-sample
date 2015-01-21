@@ -1,0 +1,13 @@
+<h3>RBooks</h3>
+<a href='{% url "create_rbook" %}'>Create</a>
+<hr />
+{% for book in object_list %}
+    Name: {{ book.name }}, Author: {{ book.author }}<br />
+    <h4>Versions</h4>
+    {% for ver in book.get_versions %}
+        Revision user:{{ ver.revision.user }},
+        version date: {{ ver.revision.date_created }}, historical values: {{ ver.object_version.object.name }}, {{ ver.object_version.object.author }} <br />
+    {% endfor %}
+    <a href = '{% url "update_rbook" book.id %}'>Update</a>
+    <hr />
+{% endfor %}
